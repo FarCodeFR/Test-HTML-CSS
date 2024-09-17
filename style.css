@@ -1,0 +1,193 @@
+
+
+@font-face {
+    font-family: "OranienBaume" ;
+    src: url(./Assets/Fonts/Oranienbaum-Regular.ttf);
+}
+/* l'étoile donne du style a tous les éléments */
+/*{
+    margin: 0;
+    padding: 0;
+}*/
+
+body { 
+    font-family: "OranienBaume", Verdana;
+    background: rgb(219, 161, 213);
+    background: url(./Assets/Img/Bg.jpg) center/cover;
+    /* VH = 100% de la taille de l'écran (viewport height) */
+    min-height: 100vh;
+}
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    /* les tailles de polices doivent être en REM */
+    /* VW = view width */
+    font-size: 8vw;
+    text-shadow: 3px 3px 8px #040101 ;
+    color: rgb(255, 255, 255);
+} 
+main {
+    min-height: 500px;
+    width: 90%;
+    background: rgba(246, 242, 242, 0.747);
+    /* Centrer la boite */
+    margin: 0 auto;
+    border: 2px solid rgb(134, 171, 215);
+    /* Bordure de chaques côtés */
+    border-radius: 20px;
+    /* Pour les côtés, sinon utilisé 
+    border-radius: 0px 0px 0px 0px; et modifier pour tous les côtés ou un par un 
+    border-top-left-radius: ;
+    border-top-right-radius: ;
+    border-bottom-left-radius: ;
+    border-bottom-right-radius: ; */  
+    box-shadow: 0 0 0 black;
+    padding: 15px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.Inventory, .grid, .absolute {
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    min-height: 150px ;
+}
+
+/* Inventory 
+Sert a répartir équitablement des éléments sur la page */ 
+
+.Inventory ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Inventory li {
+    list-style: none;
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    background: rgb(177, 199, 206);
+    /* Centrer un unique élément verticalement et horizontalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* GRID */ 
+.grid-container {
+    display: grid;
+    grid-template-columns: 30% 60%;
+}
+.grid img {
+    width: 70%;
+    margin: 20px auto;
+    display: block;
+    /* display block veut dire qu'il prend tout la place du block possible */
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "i1 i2"
+    "ta ta"
+    "vi bt";
+}
+
+input, textarea {
+    margin: 5px;
+    border: 1px solid darkblue;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-family: "OranienBaume";
+    border-radius: 5px;
+}
+textarea {
+    grid-area: ta;
+    height: 40px;
+    resize: none;
+}
+
+#btn-submit {
+    grid-area: bt;
+    cursor: pointer;
+    background: rgb(204, 56, 78);
+    transition: 0.2s;
+
+}
+/* hover = quand on survole la zone indiqué qu'est ce que ça fait */
+#btn-submit:hover {
+    background: rgb(42, 218, 95);
+
+}
+
+/* Absolute */
+/* Sans élément en Relative, de base, l'élément en absolute l'est par rapport au Body */
+/* Il faut mettre une position relative au parent pour contraindre l'élément en absolute dans les frontières du parent */
+.absolute {
+    position: relative;
+}
+
+#circle1 {
+    height: 80px;
+    width: 80px;
+    background: skyblue;
+    position: absolute;
+    border-radius: 150px;
+    top: 0;
+    right: 0;
+}
+#circle2 {
+    height: 40px;
+    width: 40px;
+    background: teal;
+    position: absolute;
+    border-radius: 150px;
+    left: 50%;
+    /* Pour prendre le centre de l'objet et pas le côté pour centre */
+    transform: translateX(-50%);
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 750px) {
+    .grid-container {
+        display: block;
+    }
+    .grid-container img {
+        width: 40%;   
+    }
+}
+/* au dessu 610px tout s'annule */
+@media screen and (max-width: 610px) {
+    .Inventory ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    form {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "i1" 
+        "i2" 
+        "ta"
+         "bt";
+
+    }
+    input,
+    textarea {
+        font font-size: 0.8rem;
+    }
+} 
+
+  
+
+
+
